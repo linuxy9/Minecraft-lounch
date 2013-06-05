@@ -1,0 +1,60 @@
+#!/bin/bash
+# you will need ubuntu 13.04 and up
+# Nathan Cluff has made this sh file
+# Make sure you "chmod +x /bin/minecraft" it
+# Make sure that you put it in /bin you need to do with root access.
+tput bold
+echo -e '\E[31m'
+echo "nathan30 has full rights of this scipt and modify it too"
+tput bold
+sleep 3
+echo -e '\E[32m'
+echo "Welcome to Mc Lonch for lonching minecraft on ubuntu 13.04"
+echo "
+------------------------------------------------------------------------    
+                                                            
+    /\    /\      ________     _       ______           ________ __
+   /  \  /  \     |  ____|    | |     | ___ |   _       |  ____| | |
+  / /\ \/ /\ \    | |         | |     ||   ||  | |____  | |      | |__
+ / /  \__/  \ \   | |____     | |___  ||___||  |  __  | | |_____ | _  |
+/ /          \_\  |______|    |_|___| |_____|  | |  | | |______| || | |
+------------------------------------------------------------------------
+"
+tput sgr0
+sleep 3
+tput bold
+echo -e '\E[33m'
+echo 'The following must be inplace in order for this to run minecraft
+1) must have sun-java6-jre, sun-java6-jdk, sun-java6-bin.
+2) minecraft.jar must be in /usr
+3) You will need ubuntu 13.04 and up
+If you meet these reqirements you can continue'
+echo -e '\E[32m'
+echo "Do you want to tell how i got sun-java6-jre, sun-java6-jdk, sun-java6-bin?
+(1 yes tell me) (2 no)"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) echo "ok so you put a line in /etc/apt/sources.list called
+        (deb http://ftp.us.debian.org/debian/ squeeze non-free
+        deb-src http://ftp.us.debian.org/debian/ squeeze non-free) then do
+        (sudo apt-get update && sudo apt-get install sun-java6-jre sun-java6-jdk
+        sun-java6-bin) thats all"; echo -e '\E[31m30 sec unitl this moves on'; sleep 30; break;;
+        No ) echo "ok contuning on"; sleep 3; break;;
+    esac
+done
+echo -e '\E[36m'
+echo "luanch Minecraft? (1 for Yes or 2 for No.)"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) tput bold; echo LUNCHING MINECRAFT.JAR!!; tput sgr0 && echo -e '\E[37m'; java -Xmx1024m -Xms1024m -jar /usr/minecraft.jar net.minecraft.LauncherFrame; break;;
+        No ) echo -e '\E[31mSadness for not playing minecraft today:('; tput sgr0; exit;;
+    esac
+done
+
+sleep 3
+tput bold
+sleep 5 
+echo -e '\E[33mThanks for playing Minecraft.
+Have a wonderful day!!!'
+tput sgr0
+exit 0
